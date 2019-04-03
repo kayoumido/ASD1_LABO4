@@ -23,24 +23,45 @@ public:
     }
 
     size_type size() const {
+        return taille;
     }
 
     size_type capacity() const {
+        return buffer.size();
     }
 
     bool empty() const {
+        return !taille;
     }
 
-    reference back() const {
+    value_type back() const {
+        return buffer.at(taille-1);
     }
 
-    reference front() const {
+    reference back() {
+        return buffer.at(taille-1);
+    }
+
+    value_type front() const {
+        return buffer.at(debut);
+    }
+
+    reference front() {
+        return buffer.at(debut);
     }
 
     void push_back(const_reference value) {
     }
 
     void push_front(const_reference value){
+        if(empty()) {
+            buffer.at(debut) = value;
+        } else if(debut != 0) {
+            buffer.at(debut-1) = value;
+            --debut;
+        }else if(){
+            TODO
+        }
     }
 
     void pop_back() {
