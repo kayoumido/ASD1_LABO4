@@ -96,8 +96,8 @@ void testVariableCapacity() {
 }
 
 int main() {
-    testAPI();
-    testConstAPI();
-    testConstantCapacity();
-    testVariableCapacity();
+    //testAPI();
+    //testConstAPI();
+    //testConstantCapacity();
+    //testVariableCapacity();
 }

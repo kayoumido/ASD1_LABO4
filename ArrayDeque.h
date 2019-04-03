@@ -19,13 +19,37 @@ private:
     size_type taille;
 
 public:
-    ArrayDeque(size_type capacity = 0) : debut(0), taille(0), buffer(capacity)
-    {
+    ArrayDeque(size_type capacity = 0) : debut(0), taille(0), buffer(capacity) {
     }
 
-// Completer cette classe générique pour qu'elle passe le codecheck
+    size_type size() const {
+    }
 
+    size_type capacity() const {
+    }
+
+    bool empty() const {
+    }
+
+    reference back() const {
+    }
+
+    reference front() const {
+    }
+
+    void push_back(const_reference value) {
+    }
+
+    void push_front(const_reference value){
+    }
+
+    void pop_back() {
+    }
+
+    void pop_front() {
+    }
 
 };
+
 
 #endif /* ArrayDeque_hpp */
