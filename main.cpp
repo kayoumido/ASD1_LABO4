@@ -103,6 +103,6 @@ int main() {
 
     testAPI();
     testConstAPI();
-    //testConstantCapacity();
+    testConstantCapacity();
     //testVariableCapacity();
 }
