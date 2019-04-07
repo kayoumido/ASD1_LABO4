@@ -11,18 +11,23 @@ void testAPI() {
     cout << " size " << dq.size() << endl;
     cout << " capacity " << dq.capacity() << endl;
     cout << " empty " << boolalpha << dq.empty() << endl;
+
+
     dq.push_back(0);
     cout << " back " << dq.back() << endl;
     dq.back() = 1;
+    /*
     dq.push_front(0);
     cout << " front " << dq.front() << endl;
     dq.front() = 2;
     dq.pop_front();
     dq.pop_back();
+     */
 }
 
 void testConstAPI()
 {
+    /*
     cout << endl << "Test const API" << endl;
 
     ArrayDeque<int> dq(10);
@@ -34,6 +39,7 @@ void testConstAPI()
     cout << " empty " << boolalpha << cdq.empty() << endl;
     cout << " front " << cdq.front() << endl;
     cout << " back " << cdq.back() << endl;
+     */
 }
 
 void fillDeque(ArrayDeque<int>& dq, size_t n)
@@ -96,7 +102,7 @@ void testVariableCapacity() {
 }
 
 int main() {
-    //testAPI();
+    testAPI();
     //testConstAPI();
     //testConstantCapacity();
     //testVariableCapacity();

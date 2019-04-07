@@ -18,6 +18,13 @@ private:
     size_type debut;
     size_type taille;
 
+
+    size_type physical_i(size_type logical_i) {
+        size_type physicalIndex = (debut + logical_i) % capacity();
+
+        return (physicalIndex >= 0) ? physicalIndex : physicalIndex + capacity();
+    }
+
 public:
     ArrayDeque(size_type capacity = 0) : debut(0), taille(0), buffer(capacity) {
     }
@@ -35,22 +42,26 @@ public:
     }
 
     value_type back() const {
-        return buffer.at(taille-1);
+        return buffer.at(physical_i(taille));
     }
 
     reference back() {
-        return buffer.at(taille-1);
+        return buffer.at(physical_i(taille-1));
     }
 
     value_type front() const {
-        return buffer.at(debut);
+        return buffer.at(physical_i(0));
     }
 
     reference front() {
-        return buffer.at(debut);
+        return buffer.at(physical_i(0));
     }
 
     void push_back(const_reference value) {
+        if(taille < capacity()){
+            buffer.at(physical_i(taille)) = value;
+            taille += 1;
+        }
     }
 
     void push_front(const_reference value){
@@ -59,9 +70,12 @@ public:
         } else if(debut != 0) {
             buffer.at(debut-1) = value;
             --debut;
-        }else if(){
+        }
+        /*
+        else if(){
             TODO
         }
+         */
     }
 
     void pop_back() {
