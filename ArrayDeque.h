@@ -65,17 +65,10 @@ public:
     }
 
     void push_front(const_reference value){
-        if(empty()) {
+        if(taille < capacity()) {
+            debut = physical_i(capacity() - 1);
             buffer.at(debut) = value;
-        } else if(debut != 0) {
-            buffer.at(debut-1) = value;
-            --debut;
         }
-        /*
-        else if(){
-            TODO
-        }
-         */
     }
 
     void pop_back() {
