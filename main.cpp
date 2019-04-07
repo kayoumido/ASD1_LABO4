@@ -24,7 +24,7 @@ void testAPI() {
 
 void testConstAPI()
 {
-    /*
+
     cout << endl << "Test const API" << endl;
 
     ArrayDeque<int> dq(10);
@@ -36,7 +36,7 @@ void testConstAPI()
     cout << " empty " << boolalpha << cdq.empty() << endl;
     cout << " front " << cdq.front() << endl;
     cout << " back " << cdq.back() << endl;
-     */
+
 }
 
 void fillDeque(ArrayDeque<int>& dq, size_t n)
@@ -102,7 +102,7 @@ int main() {
     cout << "Test" << endl;
 
     testAPI();
-    //testConstAPI();
+    testConstAPI();
     //testConstantCapacity();
     //testVariableCapacity();
 }

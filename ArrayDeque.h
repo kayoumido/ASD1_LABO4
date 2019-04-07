@@ -19,7 +19,7 @@ private:
     size_type taille;
 
 
-    size_type physical_i(size_type logical_i) {
+    size_type physical_i(size_type logical_i) const {
         size_type physicalIndex = (debut + logical_i) % capacity();
 
         return (physicalIndex >= 0) ? physicalIndex : physicalIndex + capacity();
