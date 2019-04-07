@@ -60,7 +60,7 @@ public:
     void push_back(const_reference value) {
         if(taille < capacity()){
             buffer.at(physical_i(taille)) = value;
-            taille += 1;
+            ++taille;
         }
     }
 
@@ -68,13 +68,23 @@ public:
         if(taille < capacity()) {
             debut = physical_i(capacity() - 1);
             buffer.at(debut) = value;
+            ++taille;
         }
     }
 
     void pop_back() {
+        if(taille) {
+            // detruire data[i_physique(taille - 1)] => Libérer mémoire ?
+            --taille;
+        }
     }
 
     void pop_front() {
+        if(taille){
+            // detruire data[i_physique(0)] => Libérer mémoire ?
+            debut = physical_i(1);
+            --taille;
+        }
     }
 
 };

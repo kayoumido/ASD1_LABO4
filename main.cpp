@@ -12,17 +12,14 @@ void testAPI() {
     cout << " capacity " << dq.capacity() << endl;
     cout << " empty " << boolalpha << dq.empty() << endl;
 
-
     dq.push_back(0);
     cout << " back " << dq.back() << endl;
     dq.back() = 1;
     dq.push_front(0);
     cout << " front " << dq.front() << endl;
     dq.front() = 2;
-    /*
     dq.pop_front();
     dq.pop_back();
-     */
 }
 
 void testConstAPI()
@@ -102,6 +99,8 @@ void testVariableCapacity() {
 }
 
 int main() {
+    cout << "Test" << endl;
+
     testAPI();
     //testConstAPI();
     //testConstantCapacity();
