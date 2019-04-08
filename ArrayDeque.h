@@ -18,12 +18,36 @@ private:
     size_type debut;
     size_type taille;
 
-
     size_type physical_i(size_type logical_i) const {
         size_type physicalIndex = (debut + logical_i) % capacity();
 
         return (physicalIndex >= 0) ? physicalIndex : physicalIndex + capacity();
     }
+
+    size_type newCapacity() const {
+        return (capacity() == 0) ? 1 : 2 * capacity();
+    }
+
+    void increaseCapacity() {
+        std::vector<value_type> tmp(newCapacity());
+
+        if(!empty()) {
+            size_type physicalBegin = physical_i(0);
+            size_type i = 0;
+            // Add item into tmp vector in a linear mode => from physical begin to end
+            for (size_type physicalIndex = physicalBegin; physicalIndex < taille; ++i, ++physicalIndex) {
+                tmp.at(i) = buffer.at(physicalIndex);
+            }
+            for (size_type physicalIndex = 0; physicalIndex < physicalBegin; ++i, ++physicalIndex) {
+                tmp.at(i) = buffer.at(physicalIndex);
+            }
+        }
+
+        std::swap(buffer, tmp);
+        // The begin index is 0 because now we have all our item like a linear struct with more capacity.
+        debut = 0;
+    }
+
 
 public:
     ArrayDeque(size_type capacity = 0) : debut(0), taille(0), buffer(capacity) {
@@ -42,7 +66,7 @@ public:
     }
 
     value_type back() const {
-        return buffer.at(physical_i(taille));
+        return buffer.at(physical_i(taille-1));
     }
 
     reference back() {
@@ -58,18 +82,22 @@ public:
     }
 
     void push_back(const_reference value) {
-        if(taille < capacity()){
-            buffer.at(physical_i(taille)) = value;
-            ++taille;
+        if(taille >= capacity()) {
+            increaseCapacity();
         }
+
+        buffer.at(physical_i(taille)) = value;
+        ++taille;
     }
 
     void push_front(const_reference value){
-        if(taille < capacity()) {
-            debut = physical_i(capacity() - 1);
-            buffer.at(debut) = value;
-            ++taille;
+        if(taille >= capacity()) {
+            increaseCapacity();
         }
+
+        debut = physical_i(capacity() - 1);
+        buffer.at(debut) = value;
+        ++taille;
     }
 
     void pop_back() {
@@ -86,6 +114,7 @@ public:
             --taille;
         }
     }
+
 
 };
 

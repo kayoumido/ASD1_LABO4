@@ -81,7 +81,7 @@ void emptyDequeFromBack(ArrayDeque<int>& dq)
 void testConstantCapacity() {
     cout << endl << "Test constant capacity" << endl;
 
-    ArrayDeque<int> dq(20);
+    ArrayDeque<int> dq(12);
     fillDeque(dq, 12);
     emptyDequeFromFront(dq);
     fillDeque(dq, 12);
@@ -99,10 +99,8 @@ void testVariableCapacity() {
 }
 
 int main() {
-    cout << "Test" << endl;
-
     testAPI();
     testConstAPI();
     testConstantCapacity();
-    //testVariableCapacity();
+    testVariableCapacity();
 }
